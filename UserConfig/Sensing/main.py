@@ -13,4 +13,4 @@ mybmp280 = BMP280()
 # sensing loop
 while True:
     sleep(1)
-    publish( mysht40.get_TRH() | mybmp280.get_P() )
+    publish( {"machine": "MachineNameHere"} | mysht40.get_TRH() | mybmp280.get_P() )
