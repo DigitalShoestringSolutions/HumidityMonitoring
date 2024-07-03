@@ -1,12 +1,7 @@
-# Starter Solution Template
-Creating a repository from this template will start it with the file structure shown here.
-This will mean that a standard set of actions can be applied and some typical files, however sadly none of the branches or repository settings will be transferred.
+# Air Relative Humidity, Temperature and Pressure monitoring solution
 
-This README will detail the steps that should be taken after using this template to get a starter solution into our standard format.
-
-# Steps
-TODO
-
-
-# Checklist
-- [ ] Make sure the starter solution has a basic README that explains how to build and run it
+- Clone this repo eg `git clone https://github.com/DigitalShoestringSolutions/HumidityMonitoring`
+- Open the downloaded folder `cd HumidityMonitoring`
+- Assemble the Service Modules `ServiceModules/Asssembly/get_service_modules.sh`
+- Build the docker containers `docker compose build`
+- Start the docker containers `./start.sh`
