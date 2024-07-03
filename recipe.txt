@@ -1,0 +1,7 @@
+Docker=feature/recipe           # demonstrating use of init_SM
+SetupLogging=feature/recipe     # demonstrating use of init_SM
+MQTTBroker=feature/recipe
+Grafana=feature/recipe          # demonstrating nested config files 
+Sensing=feature/recipe-lite
+Sensing=feature/recipe-lite     # demonstrating duplicate Service Modules
+Timeseries=feature/recipe
