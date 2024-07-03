@@ -4,7 +4,7 @@ Telemetry=dev
 
 MQTTBroker=feature/recipe
 Timeseries=feature/recipe
-AWSRelay
+AWSRelay=feature/recipe
 
 Grafana=feature/recipe
 Sensing=feature/recipe-lite
