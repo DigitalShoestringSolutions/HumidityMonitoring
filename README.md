@@ -6,3 +6,4 @@
 - Assemble the Service Modules `ServiceModules/Asssembly/get_service_modules.sh`
 - Build the docker containers `docker compose build`
 - Start the docker containers `./start.sh`
+- View the dashboard: nevigate to `localhost:3000` in a web browser
