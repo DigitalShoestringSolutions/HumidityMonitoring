@@ -14,4 +14,4 @@
 ### Build & Run
 - Build the docker containers `docker compose build`
 - Start the docker containers `./start.sh`
-- View the dashboard: nevigate to `localhost:3000` in a web browser
+- View the dashboard: navigate to `localhost:3000` in a web browser
