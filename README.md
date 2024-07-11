@@ -8,6 +8,7 @@
 - Edit the config file to set machine name `nano UserConfig/Sensing/main.py`
 - Check the recipe contains the Service Modules you desire `nano recipe.txt`
 - Assemble the Service Modules `ServiceModules/Asssembly/get_service_modules.sh`
+- Restart to apply the settings to the downloaded Service Modules
 
 ### Build & Run
 - Build the docker containers `docker compose build`
@@ -23,9 +24,9 @@ The default collection of Service Modules creates an independent system, complet
 
 - In `recipe.txt`, remove the Service Modules that are not required:
     - MQTTBroker
+    - AWSRelay
     - Timeseries
     - Grafana
-    - AWSRelay
-    - Telemetry
+      
 - In `UserConfig/Sensing/main.py`, Add `, broker="xxx.xxx.xxx.xxx"` to the end of the `publish` function to send the data to the master pi. Hence ideally your master pi will have a static IP address. For example the last line could become:
     - `publish( {"machine": "StoreRoom"} | mysht40.get_TRH() | mybmp280.get_P(), broker="192.168.59.50" )`
