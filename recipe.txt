@@ -1,6 +1,5 @@
-# Docker=feature/recipe
-# SetupLogging=feature/recipe
-# Telemetry=dev
+Docker=feature/recipe
+SetupLogging=feature/recipe
 
 MQTTBroker=feature/recipe
 Timeseries=feature/recipe
