@@ -17,7 +17,8 @@
 ### Usage
 - View the dashboard: navigate to `localhost:3000` in a web browser
 
-![image](https://github.com/DigitalShoestringSolutions/HumidityMonitoring/assets/51968582/f25fa0a5-1ede-4509-813b-4811b7263210)
+![image](https://github.com/user-attachments/assets/1eee8e04-9aac-4ee2-9613-22e11bfc6346)
+
 
 ### Additional Sensing Nodes
 The default collection of Service Modules creates an independent system, complete with communications controller, database and dashboard hosting. If in your deployment environment you would like to expand an existing sytem by adding more sensors connected over the network, the Solution can be built in a simplified configuration that only gathers data and sends it to the master pi. 
