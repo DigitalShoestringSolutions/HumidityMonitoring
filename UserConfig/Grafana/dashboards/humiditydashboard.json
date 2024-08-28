@@ -667,8 +667,8 @@
       {
         "current": {
           "selected": false,
-          "text": "RobotLabTable3",
-          "value": "RobotLabTable3"
+          "text": "MachineNameHere",
+          "value": "MachineNameHere"
         },
         "datasource": {
           "type": "influxdb",
