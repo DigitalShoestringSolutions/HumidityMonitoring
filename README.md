@@ -17,7 +17,7 @@
 ### Usage
 - View the dashboard: navigate to `localhost:3000` in a web browser
 
-![image](https://github.com/user-attachments/assets/1eee8e04-9aac-4ee2-9613-22e11bfc6346)
+![image](https://github.com/user-attachments/assets/ef3972aa-4e11-4208-b141-6587e39b842b)
 
 
 ### Additional Sensing Nodes
