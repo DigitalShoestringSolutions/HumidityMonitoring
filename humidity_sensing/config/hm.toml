@@ -1,0 +1,78 @@
+#=-= Define Interface Modules =-=
+[interface.i2c0]
+    module="i2c"
+    class="I2C"
+[interface.i2c0.config]
+    bus=1
+
+#=-= Define Device Modules =-=
+[device.bmp280]
+    module="sensor_BMP280"
+    class="BMP280"
+    interface="i2c0"
+[device.bmp280.config]
+[device.bmp280.variables]
+    P = "pressure"
+    T = "temperature_p"
+
+[device.sht40]
+    module="sensor_SHT4X"
+    class="SHT40"
+    interface="i2c0"
+[device.sht40.config]
+[device.sht40.variables]
+    RH = "humidity"
+    T = "temperature"
+
+#=-= Define Calculation Modules =-=
+[calculation.machine_name]
+    module="gen_constants"
+    class="ConstantSet"
+[calculation.machine_name.config]
+    machine = "Machine_1"
+[calculation.machine_name.variables]
+
+#=-= Define Calculation Pipelines =-=
+[pipelines]
+    set_name = ["machine_name"]
+
+#=-= Define Measurements Pipelines =-=
+[measurement]
+    module="gen_sample"
+    class="MultiSampleMerged"
+[measurement.config]
+    period = 1.0 # seconds
+[[measurement.sensing_stacks]]
+    device = "bmp280"
+    pipeline = "set_name"
+    constants = {}
+[[measurement.sensing_stacks]]
+    device = "sht40"
+    pipeline = "set_name"
+    constants = {}
+
+[output.overall]
+    topic = "pressure/{{machine}}"
+[output.overall.message_spec]
+    timestamp = '$.timestamp'
+    pressure = '$.pressure'
+    temperature = "$.temperature"
+    temperature_p = "$.temperature_p"
+    relative_humidity = "$.humidity"
+    machine="$.machine"
+
+
+[mqtt]
+    broker = "mqtt.docker.local"
+    port = 1883   #common mqtt ports are 1883 and 8883
+    topic_prefix = ""
+
+    #reconnection characteristics
+    # start: timeout = initial,
+    # if timeout < limit then
+    #   timeout = timeout*backoff
+    # else
+    #   timeout = limit
+    reconnect.initial = 5 # seconds
+    reconnect.backoff = 2 # multiplier
+    reconnect.limit = 60 # seconds
