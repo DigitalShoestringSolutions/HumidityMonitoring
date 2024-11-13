@@ -93,7 +93,10 @@ class BMP280:
 
     def initialise(self, interface):
         self.i2c = interface
-
+        self._initialise_bmp280()
+        
+        
+    def _initialise_bmp280(self):
         # Fetch callibration data
         buffer_out = self.i2c.read_register(
             self.i2c_address, self.BMP280_CALIBRATION_REGISTER, 24
@@ -124,25 +127,45 @@ class BMP280:
         buffer_out = self.i2c.write_register(
             self.i2c_address, self.BMP280_CNTL_MEAS_REGISTER, [control]
         )
+        
+        time.sleep(0.1) # give time to fill filter registers
+        
+    def _do_read(self):
+        # Read 3 temperature bytes and 3 pressure bytes
+        buffer_out = self.i2c.read_register(
+            self.i2c_address, self.BMP280_RESULT_REGISTER, 6
+        )
+        # extract temperature and pressure values
+        raw_pressure = (
+            (buffer_out[0] << 16) + (buffer_out[1] << 8) + buffer_out[2]
+        ) >> 4
+        raw_temperature = (
+            (buffer_out[3] << 16) + (buffer_out[4] << 8) + buffer_out[5]
+        ) >> 4
+        
+        return raw_pressure, raw_temperature
 
     def sample(self):
         try:
-            # Read 3 temperature bytes and 3 pressure bytes
-            buffer_out = self.i2c.read_register(
-                self.i2c_address, self.BMP280_RESULT_REGISTER, 6
-            )
-            # extract temperature and pressure values
-            raw_pressure = (
-                (buffer_out[0] << 16) + (buffer_out[1] << 8) + buffer_out[2]
-            ) >> 4
-            raw_temperature = (
-                (buffer_out[3] << 16) + (buffer_out[4] << 8) + buffer_out[5]
-            ) >> 4
+            raw_pressure, raw_temperature = self._do_read()
 
-            logger.debug(f"buffer: {buffer_out}")
             logger.debug(f"raw_pressure: {raw_pressure}")
             logger.debug(f"raw_temperature: {raw_temperature}")
             # check for bad values
+            if raw_pressure == 0x80000 or raw_temperature == 0x80000:
+                # device may not be initialised or something went wrong
+                logger.warning("Invalid reading - performing soft reset on BMP280")
+                # soft reset
+                self.i2c.write_register(
+                    self.i2c_address,self.BMP280_RESET_REGISTER,[self.BMP280_RESET_VALUE]
+                )
+                # startup time listed as 2 ms, wait 5 to be safe
+                time.sleep(0.005)
+                #reinitialise
+                self._initialise_bmp280()
+                # read again
+                raw_pressure, raw_temperature = self._do_read()
+                # if values are bad again, just continue, don't block here indefinitely - will either be better on the next sample or reset again
 
             # calibrate
             temperature = self.compensate_temperature(raw_temperature)
@@ -206,3 +229,4 @@ class BMP280:
         var2 = p * self.cal_dig_P8 / 32768.0
         p = p + (var1 + var2 + self.cal_dig_P7) / 16.0
         return p
+
