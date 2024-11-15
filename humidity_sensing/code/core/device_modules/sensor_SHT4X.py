@@ -55,11 +55,11 @@ class SHT40:
             
             # extract temperature and humidity values
             raw_temperature = (buffer_out[0] << 8) + buffer_out[1]
-            if not self.crc_calculator.verify(buffer_out[0:2], buffer_out[2]):
+            if not self.crc_calculator.verify(bytes(buffer_out[0:2]), buffer_out[2]):
                 logger.warning("CRC Checksum on Temperature failed")
             
             raw_humidity = (buffer_out[3] << 8) + buffer_out[4]
-            if not self.crc_calculator.verify(buffer_out[2:4], buffer_out[5]):
+            if not self.crc_calculator.verify(bytes(buffer_out[3:5]), buffer_out[5]):
                 logger.warning("CRC Checksum on Humidity failed")
                 
             temperature = self._calculate_temperature(raw_temperature)

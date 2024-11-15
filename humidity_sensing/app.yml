@@ -3,7 +3,7 @@ version: "2"
 services:
     app:
         build: .
-        command: ["python","main.py","--log","debug"]
+        command: ["python","main.py","--log","info"]
         privileged: true
         volumes:
             - ./config:/app/config
