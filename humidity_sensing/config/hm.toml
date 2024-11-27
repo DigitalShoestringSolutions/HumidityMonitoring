@@ -25,16 +25,16 @@
     T = "temperature"
 
 #=-= Define Calculation Modules =-=
-[calculation.machine_name]
+[calculation.location_name]
     module="gen_constants"
     class="ConstantSet"
-[calculation.machine_name.config]
-    machine = "Machine_1"
-[calculation.machine_name.variables]
+[calculation.location_name.config]
+    location = "Location Name"
+[calculation.location_name.variables]
 
 #=-= Define Calculation Pipelines =-=
 [pipelines]
-    set_name = ["machine_name"]
+    set_name = ["location_name"]
 
 #=-= Define Measurements Pipelines =-=
 [measurement]
@@ -52,14 +52,14 @@
     constants = {}
 
 [output.overall]
-    topic = "pressure/{{machine}}"
+    topic = "ambient_environment/{{location}}"
 [output.overall.message_spec]
     timestamp = '$.timestamp'
     pressure = '$.pressure'
     temperature = "$.temperature"
     temperature_p = "$.temperature_p"
     relative_humidity = "$.humidity"
-    machine="$.machine"
+    location="$.location"
 
 
 [mqtt]

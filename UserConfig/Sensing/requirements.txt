@@ -1,2 +1,0 @@
-smbus2==0.4.3    # Library for I2C serial communication bus on Raspberry Pi
-bmp280==0.0.4    # Library for BMP280 atmospheric pressure sensor
