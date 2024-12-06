@@ -1,4 +1,4 @@
 module_config_file = "./config/hm.toml"
 
 #   Set the machine name
-calculation.machine_name.config.machine = "Machine_Name_Here"
+calculation.location_name.config.machine = "Machine_Name_Here"

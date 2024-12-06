@@ -58,7 +58,7 @@
     pressure = '$.pressure'
     temperature = "$.temperature"
     temperature_p = "$.temperature_p"
-    relative_humidity = "$.humidity"
+    humidity = "$.humidity"
     location="$.location"
 
 
