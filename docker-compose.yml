@@ -1,0 +1,82 @@
+services:
+    timeseries-db:
+        extends:
+            file: timeseries_datastorage/app.yml
+            service: db
+        networks:
+            internal:
+                aliases:
+                    - timeseries-db.docker.local
+        logging:
+            driver: syslog
+            options:
+                tag: docker-timeseries-db
+        restart: unless-stopped
+        depends_on:
+            - "mqtt_broker"
+    timeseries-db-input:
+        extends:
+            file: timeseries_datastorage/app.yml
+            service: telegraf
+        networks:
+            internal:
+                aliases:
+                    - timeseries-input.docker.local
+        logging:
+            driver: syslog
+            options:
+                tag: docker-timeseries-input
+        restart: unless-stopped
+        depends_on:
+            - "timeseries-db"
+            - "mqtt_broker"
+    dashboard:
+        extends:
+            file: dashboards/app.yml
+            service: app
+        networks:
+            internal:
+                aliases:
+                    - dashboards.docker.local
+        logging:
+            driver: syslog
+            options:
+                tag: docker-dashboards
+        restart: unless-stopped
+        depends_on:
+            - "mqtt_broker"
+ 
+   
+    humidity-sensing:
+        extends:
+            file: humidity_sensing/app.yml
+            service: app
+        networks:
+            internal:
+                aliases:
+                    - humidity-sensing.docker.local
+        logging:
+            driver: syslog
+            options:
+                tag: docker-humidity-sensing
+        restart: unless-stopped
+        depends_on:
+            - "mqtt_broker"
+ 
+    mqtt_broker:
+        extends:
+            file: mqtt_broker/app.yml
+            service: app
+        restart: unless-stopped
+        logging:
+            driver: syslog
+            options:
+                tag: docker-mqtt-broker
+        networks:
+            internal:
+                aliases:
+                    - mqtt.docker.local
+
+networks:
+     internal:
+         name: shoestring-internal
