@@ -119,7 +119,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": 10000,
+            "spanNulls": 60000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -328,7 +328,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": 10000,
+            "spanNulls": 60000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -538,7 +538,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": 10000,
+            "spanNulls": 60000,
             "stacking": {
               "group": "A",
               "mode": "none"
