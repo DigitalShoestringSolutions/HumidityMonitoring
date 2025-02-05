@@ -689,9 +689,10 @@
     "list": [
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "MachineNameHere",
-          "value": "MachineNameHere"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "influxdb",
@@ -729,6 +730,6 @@
   "timezone": "",
   "title": "Single Sensor",
   "uid": "oBgnpeQIz",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }
