@@ -15,12 +15,11 @@
 - Start the docker containers `./start.sh`
 
 ### Usage
-- View the dashboard: navigate to `localhost:3000` in a web browser
+- View the dashboards: navigate to `localhost:3000` in a web browser:
 
-![image](https://github.com/user-attachments/assets/ef3972aa-4e11-4208-b141-6587e39b842b)
+![image](https://github.com/user-attachments/assets/87c6c741-8b0f-47b2-8376-9b4b64879a4a)
 
-![image](https://github.com/user-attachments/assets/406bf5cc-232b-4abd-83ff-c64687bcb410)
-
+![image](https://github.com/user-attachments/assets/732c5968-577d-4385-862f-1f04d62e768d)
 
 ### Additional Sensing Nodes
 The default collection of Service Modules creates an independent system, complete with communications controller, database and dashboard hosting. If in your deployment environment you would like to expand an existing sytem by adding more sensors connected over the network, the Solution can be built in a simplified configuration that only gathers data and sends it to the master pi. 
