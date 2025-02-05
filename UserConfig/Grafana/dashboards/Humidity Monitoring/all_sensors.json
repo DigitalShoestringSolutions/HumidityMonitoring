@@ -101,7 +101,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -114,7 +114,7 @@
             "type": "influxdb",
             "uid": "influxdb"
           },
-          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"humidity\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\r\n  |> yield(name: \"mean\")",
+          "query": "from(bucket: \"${const_bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"humidity\")\r\n  |> keep(columns: [\"_time\", \"machine\", \"_value\"]) // removes field name from legend\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\r\n  |> yield(name: \"mean\")",
           "refId": "A"
         }
       ],
@@ -176,7 +176,7 @@
             "type": "influxdb",
             "uid": "influxdb"
           },
-          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: now())\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"humidity\")\r\n  |> keep(columns: [\"_time\", \"machine\", \"_value\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
+          "query": "from(bucket: \"${const_bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: now())\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"humidity\")\r\n  |> keep(columns: [\"_time\", \"machine\", \"_value\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
           "refId": "A"
         }
       ],
@@ -256,7 +256,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -269,7 +269,7 @@
             "type": "influxdb",
             "uid": "influxdb"
           },
-          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\r\n  |> yield(name: \"mean\")",
+          "query": "from(bucket: \"${const_bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")\r\n  |> keep(columns: [\"_time\", \"machine\", \"_value\"]) // removes field name from legend\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\r\n  |> yield(name: \"mean\")",
           "refId": "A"
         }
       ],
@@ -331,7 +331,7 @@
             "type": "influxdb",
             "uid": "influxdb"
           },
-          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: now())\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")\r\n  |> keep(columns: [\"_time\", \"machine\", \"_value\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
+          "query": "from(bucket: \"${const_bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: now())\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")\r\n  |> keep(columns: [\"_time\", \"machine\", \"_value\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
           "refId": "A"
         }
       ],
@@ -411,7 +411,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -424,7 +424,7 @@
             "type": "influxdb",
             "uid": "influxdb"
           },
-          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"pressure\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\r\n  |> yield(name: \"mean\")",
+          "query": "from(bucket: \"${const_bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"pressure\")\r\n  |> keep(columns: [\"_time\", \"machine\", \"_value\"]) // removes field name from legend\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\r\n  |> yield(name: \"mean\")",
           "refId": "A"
         }
       ],
@@ -486,7 +486,7 @@
             "type": "influxdb",
             "uid": "influxdb"
           },
-          "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: v.timeRangeStart, stop: now())\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"pressure\")\r\n  |> keep(columns: [\"_time\", \"machine\", \"_value\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
+          "query": "from(bucket: \"${const_bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: now())\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"humidity_sensors\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"pressure\")\r\n  |> keep(columns: [\"_time\", \"machine\", \"_value\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
           "refId": "A"
         }
       ],
@@ -499,7 +499,16 @@
   "schemaVersion": 39,
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "hide": 2,
+        "label": "",
+        "name": "const_bucket",
+        "query": "shoestring_data_bucket",
+        "skipUrlSync": false,
+        "type": "constant"
+      }
+    ]
   },
   "time": {
     "from": "now-5m",
@@ -509,6 +518,6 @@
   "timezone": "",
   "title": "All Sensors",
   "uid": "febjj9k5hvksgd",
-  "version": 3,
+  "version": 6,
   "weekStart": ""
 }
