@@ -3,7 +3,7 @@
 # Minimal launcher for the Shoestring Assembler
 
 # What version of the Assembler to use
-VERSION="v0.5.0"
+VERSION="v0.7.0"
 
 # Get location of this script
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
