@@ -1,4 +1,4 @@
-# New Starter Solution
+# Relative Humidity, Temperature and Pressure monitoring solution
 
 ## Install the Shoestring App
 In the terminal, run:
@@ -16,4 +16,7 @@ Continue accepting the prompts to build and start now
 
 ## Usage
 View Grafana dashboards in a web browser: `localhost:3000`  
-_Screenshot of dashboard goes here_
+
+![image](https://github.com/user-attachments/assets/87c6c741-8b0f-47b2-8376-9b4b64879a4a)
+
+![image](https://github.com/user-attachments/assets/732c5968-577d-4385-862f-1f04d62e768d)
