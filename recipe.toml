@@ -3,21 +3,16 @@ recipe_vsn = "1.0.0"
 
 # About the solution as a whole
 [solution]
-    name = "Power Monitoring"
-    slug = "power_monitoring"
-    version = "2.0.0"
-    description = "Shoestring Power Monitoring Starter Solution"
+    name = "Humidity Monitoring"
+    slug = "humidity_monitoring"
+    version = "1.0.0"
+    description = "Shoestring Relative Humidity, Temperature and Pressure Monitoring Starter Solution"
 
 # Service module instances present in this solution
-[service_module.current-sensing-1]
+[service_module.sensing-1]
     source="sensing"
     containers = ["sensing"]
-    template.log_level = "warning"
-
-[service_module.current-sensing-2]
-    source="sensing"
-    containers = ["sensing"]
-    template.log_level = "warning"
+    template.log_level = "info"
 
 [service_module.data-storage]
     source = "data_storage"
@@ -58,7 +53,7 @@ recipe_vsn = "1.0.0"
 # Available module code sources which can feed the above instances
 [source.sensing]
     git.path = "sm_SensingDC"
-    git.tag = "v1.0.0"
+    git.branch = "feature/env-iv"
 [source.data_storage]
     git.path = "sm_timeseries_db"
     git.tag = "v2.0.0"
