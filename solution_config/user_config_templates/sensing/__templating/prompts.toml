@@ -29,11 +29,11 @@
 [Q.sensor]
   type = "select"
   prompt = "Which sensor do you have connected for Humidity Monitoring?"
-  opt.sht40+bmp280 = "M5Stack ENV IV Unit Environmental Sensor (SHT40 + BMP280)"
+  opt.sht40_bmp280 = "M5Stack ENV IV Unit Environmental Sensor (SHT40 + BMP280)"
 
 [[OUT.module_config_file.map]]
-  criteria = "sensor=sht40+bmp280"
-  value = "hm_sht40+bmp280.toml"
+  criteria = "sensor=sht40_bmp280"
+  value = "hm_sht40_bmp280.toml"
 
 [OUT.location_name]
   var = "location_name"
