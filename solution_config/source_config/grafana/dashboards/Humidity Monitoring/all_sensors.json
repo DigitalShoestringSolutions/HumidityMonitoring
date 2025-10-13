@@ -395,7 +395,7 @@
               }
             ]
           },
-          "unit": "pressurehpa"
+          "unit": "pressurepa"
         },
         "overrides": []
       },
@@ -451,7 +451,7 @@
               }
             ]
           },
-          "unit": "pressurehpa"
+          "unit": "pressurepa"
         },
         "overrides": []
       },
@@ -526,6 +526,6 @@
   "timezone": "",
   "title": "All Sensors",
   "uid": "febjj9k5hvksgd",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }

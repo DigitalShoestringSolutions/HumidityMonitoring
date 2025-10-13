@@ -483,7 +483,7 @@
               }
             ]
           },
-          "unit": "pressurehpa"
+          "unit": "pressurepa"
         },
         "overrides": []
       },
@@ -582,7 +582,7 @@
               }
             ]
           },
-          "unit": "pressurehpa"
+          "unit": "pressurepa"
         },
         "overrides": []
       },
@@ -638,7 +638,7 @@
               }
             ]
           },
-          "unit": "pressurehpa"
+          "unit": "pressurepa"
         },
         "overrides": []
       },
@@ -738,6 +738,6 @@
   "timezone": "",
   "title": "Single Sensor",
   "uid": "oBgnpeQIz",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
