@@ -698,7 +698,7 @@
           "type": "influxdb",
           "uid": "influxdb"
         },
-        "definition": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: -365d)\r\n  |> keep(columns: [\"location\"])\r\n  |> distinct(column: \"location\")\r\n  |> filter(fn: (r) => r[\"location\"] != \"null\")\r\n  |> group()",
+        "definition": "from(bucket: \"ambient_environment\")\r\n  |> range(start: -365d)\r\n  |> keep(columns: [\"location\"])\r\n  |> distinct(column: \"location\")\r\n  |> filter(fn: (r) => r[\"location\"] != \"null\")\r\n  |> group()",
         "description": "Name of sensor to monitor",
         "hide": 0,
         "includeAll": false,
@@ -706,7 +706,7 @@
         "multi": false,
         "name": "location",
         "options": [],
-        "query": "from(bucket: \"shoestring_data_bucket\")\r\n  |> range(start: -365d)\r\n  |> keep(columns: [\"location\"])\r\n  |> distinct(column: \"location\")\r\n  |> filter(fn: (r) => r[\"location\"] != \"null\")\r\n  |> group()",
+        "query": "from(bucket: \"ambient_environment\")\r\n  |> range(start: -365d)\r\n  |> keep(columns: [\"location\"])\r\n  |> distinct(column: \"location\")\r\n  |> filter(fn: (r) => r[\"location\"] != \"null\")\r\n  |> group()",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -716,7 +716,7 @@
       {
         "hide": 2,
         "name": "const_bucket",
-        "query": "shoestring_data_bucket",
+        "query": "ambient_environment",
         "skipUrlSync": false,
         "type": "constant"
       }
