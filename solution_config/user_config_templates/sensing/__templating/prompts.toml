@@ -22,9 +22,9 @@
 #       opt.<next_value> = "<next_option_text>"  
 
 
-[Q.machine_name]
+[Q.location_name]
   type = "text"
-  prompt = "Choose a name for this machine"
+  prompt = "Choose a name for the location of this sensor"
 
 [Q.sensor]
   type = "select"
@@ -35,11 +35,11 @@
   criteria = "sensor=sht40+bmp280"
   value = "hm_sht40+bmp280.toml"
 
-[OUT.machine_name]
-  var = "machine_name"
+[OUT.location_name]
+  var = "location_name"
 
 # Note: The following lines are examples of how to reference the answers in the user configuration template.
-# For example, in user_config.toml, you can use {{machine_name}} to insert the machine name provided by the user.
+# For example, in user_config.toml, you can use {{location_name}} to insert the location name provided by the user.
 # module_config_file = "./module_config/{{module_config_file}}.toml"
-# calculation.machine_name.config.machine = "{{machine_name}}"
+# calculation.location_name.config.location = "{{location_name}}"
 # calculation.current_clamp.config.nominal_current = {{clamp_rating}}
