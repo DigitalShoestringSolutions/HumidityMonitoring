@@ -1,2 +1,68 @@
-Different solution-specific presets for turning the sensing source into ready to fine tune service module go here.
-One such file will be selected by user config (via prompts).
+#=-= Define Interface Modules =-=
+[interface.i2c0]
+    module="i2c"
+    class="I2C"
+[interface.i2c0.config]
+    bus=1
+
+
+#=-= Define Device Modules =-=
+[device.sht40]
+    module="gas_SHT4X"                     # device_modules / file name
+    class="SHT40"
+    interface="i2c0"
+[device.sht40.variables]                   # This section is required by schema.
+    RH = "relative_humidity"
+    T = "temperature_sht40"
+
+[device.bmp280]
+    module="gas_BMP280"                    # device_modules / file name
+    class="BMP280"
+    interface="i2c0"
+[device.bmp280.variables]                  # This section is required by schema.
+    P = "pressure"
+    T = "temperature_bmp280"               # Not used (not in mqtt payload) but will appear on blackboard anyway, so give throwaway name
+
+
+#=-= Define Calculation Modules =-=
+[calculation.location_name]
+    module="gen_constants"
+    class="ConstantSet"
+[calculation.location_name.config]
+    location = "overwritten_by_user_config"
+[calculation.location_name.variables]      # although empty, this section is required by schema
+
+#=-= Define Calculation Pipelines =-=
+[pipelines]
+    pipeline = ["location_name"]
+
+
+#=-= Define Measurements Pipelines =-=
+[measurement]
+    module="gen_sample"
+    class="SingleSampleAvg"
+[measurement.config]
+    period = 1.0 # seconds
+    n_samples = 5
+[[measurement.sensing_stacks]]
+    device = "sht40"
+    pipeline = "pipeline"
+[[measurement.sensing_stacks]]
+    device = "bmp280"
+    pipeline = "pipeline"
+
+
+#=-= Define Output Specification =-=
+[output.overall]
+    topic = "ambient_environment/{{location}}"
+[output.overall.message_spec]
+    timestamp = '$.timestamp'
+    humidity = "$.relative_humidity"
+    temperature = "$.temperature_sht40"
+    pressure = "$.pressure"
+    location = "$.location"
+
+
+[mqtt]
+    broker = "mqtt.docker.local"
+    port = 1883   # common mqtt ports are 1883 and 8883

@@ -8,6 +8,7 @@ recipe_vsn = "1.0.0"
     version = "1.0.0"
     description = "Shoestring Relative Humidity, Temperature and Pressure Monitoring Starter Solution"
 
+
 # Service module instances present in this solution
 [service_module.sensing-1]
     source="sensing"
@@ -26,6 +27,7 @@ recipe_vsn = "1.0.0"
     containers = ["grafana"]
     ports.grafana.ui = 3000
     template.disable_sanitise_html = "true"
+
 
 # Infrastructure modules present in this solution
 [infrastructure.mqtt-broker]
