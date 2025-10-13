@@ -40,7 +40,7 @@
 #=-= Define Measurements Pipelines =-=
 [measurement]
     module="gen_sample"
-    class="SingleSampleAvg"
+    class="MultiSampleMergedAvg"
 [measurement.config]
     period = 1.0 # seconds
     n_samples = 5
