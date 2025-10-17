@@ -504,7 +504,7 @@
         "hide": 2,
         "label": "",
         "name": "const_bucket",
-        "query": "ambient_environment",
+        "query": "ambient_conditions",
         "skipUrlSync": false,
         "type": "constant"
       },

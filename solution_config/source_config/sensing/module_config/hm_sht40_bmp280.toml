@@ -54,7 +54,7 @@
 
 #=-= Define Output Specification =-=
 [output.overall]
-    topic = "ambient_environment/{{location}}"
+    topic = "ambient_conditions/{{location}}"
 [output.overall.message_spec]
     timestamp = '$.timestamp'
     humidity = "$.relative_humidity"
